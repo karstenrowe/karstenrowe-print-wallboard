@@ -1,0 +1,367 @@
+// Created: @karstenrowe 20-20-2013
+// Project: @karstenrowe bootstrap framework
+
+// import bootstrap
+@import "bootstrap.less";
+
+// import underbar menu default styles
+@import "default-underbar.less";
+
+
+/* ============================ */
+/* = font = */
+/* ============================ */
+@headline-font: 'Crete Round', serif; // 400
+@body-font: 'Lato', sans-serif; // 400, 700, 400italic
+
+@big: 17px; // line-height: 23px;
+@normal: 15px; // line-height: 21px;
+@small: 13px; // line-height: 16px;
+@tiny: 11px;
+/* ============================ */
+
+
+/* ============================ */
+/* = color = */
+/* ============================ */
+@brand-dk: #d74641; // rose
+@brand: #fa4a62; // base brand color
+@brand-lt: #ff7487;
+@brand-bg: lighten(@brand-lt, 33%);
+
+@green-dk: #26ae87;
+@green: #74ffd7;
+@green-lt: #d4fff3;
+
+@blue-dk: #386ABE /* darken(@blue, 20%) */;
+@blue: #4786f1;
+@blue-lt: #d3e3ff;
+
+@grey-dk: #473b30;
+@grey: #6e655e;
+@grey-lt: #ab621a;
+
+@off-white: #f1f3f6; // base color
+@warm-white: #ebe7e4;
+@white: #ffffff;
+/* ============================ */
+
+
+/* ============================ */
+/* = selection color = */
+/* ============================ */
+::-moz-selection {
+  text-shadow: none;
+	color: @brand-dk;
+  background: @brand-lt;
+}
+::selection {
+  text-shadow: none;
+	color: @brand-dk;
+  background: @brand-lt;
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = toolbox = */
+/* ============================ */
+// retina mixin
+@highdpi: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+.2x(@path, @position, @w: auto, @h: auto) {
+	background-image: url(@path);
+	background-repeat: ~"@{position}";
+	@at2x_path: ~`"@{path}".split('.').slice(0, "@{path}".split('.').length - 1).join(".") + "_2x" + "." + "@{path}".split('.')["@{path}".split('.').length - 1]`;
+
+	@media @highdpi {
+		background-image: url(@at2x_path);
+		background-repeat: ~"@{position}";
+		background-size: @w @h;
+	}
+}
+// clearfix
+.clearfix() {
+	zoom: 1;
+	&:before,
+	&:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+	&:after { clear: both; }
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = framework = */
+/* ============================ */
+body {
+	font-family: @body-font;
+	font-size: @normal;
+	font-weight: normal;
+	line-height: 21px;
+	color: @grey;
+	background-color: lighten(@warm-white, 7%);
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = typography = */
+/* ============================ */
+h1,
+h2 {
+	font-family: @headline-font;
+	line-height: 40px;
+}
+h3 {
+	font-family: @headline-font;
+	line-height: 30px;
+}
+h4,
+h5,
+h6 {
+	font-family: @body-font;
+	font-weight: bold;
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = common elements = */
+/* ============================ */
+body {
+	// links
+	a {
+		text-decoration: none;
+		color: @brand;
+		&:focus,
+		&:hover {
+			text-decoration: underline;
+			color: @brand-dk;
+		}
+		&:active {
+			color: @brand;
+			background: @brand-lt;
+		}
+	}
+	// buttons
+	.btn-primary {
+		text-shadow: 0 1px 1px rgba(255,255,255, 0.2);
+	  color: @brand-dk;
+	  background-color: lighten(@brand, 10%);
+	  box-shadow: inset 0 1px 1px rgba(255,255,255, 0.35), 0 1px 1px rgba(0,0,0, 0.2);
+	  border-color: @brand-dk;
+	  margin: 8px 6px 8px 0;
+		&:hover {
+		  color: @grey-dk;
+		  background-color: @brand;
+		  box-shadow: inset 0 0px 0px 1px rgba(255,255,255, 0.15), 0 1px 1px rgba(0,0,0, 0.3);
+		  border-color: @brand-dk;
+		}
+		&:active {
+			color: @grey-dk;
+			background-color: @brand;
+			box-shadow: none;
+		  border-color: @brand;
+		}
+		span {
+			font-size: 13px;
+			margin-left: 3px;
+		}
+		&.secondary {
+			background: @grey;
+			border: 1px solid @grey-dk;
+		}
+		&.flag {
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+	// remove webkit blue glow on focus
+	a:focus,
+	button,
+	input:focus,
+	textarea:focus {
+	  outline: none;
+	}
+}
+/* ============================ */
+
+/* ============================ */
+/* = navigation = */
+/* ============================ */
+// body
+.cbp-spmenu-push-toright {
+	position: relative; // allow .js to add left value to reveal underbar
+}
+// underbar toggle button
+.navbar-default {
+	position: relative;
+	background: none;
+	border: none;
+}
+#showLeftPush {
+	position: absolute;
+	margin: 6px 12px;
+	&:active {
+		background: none;
+	}
+}
+.navbar-toggle {
+	display: block; // always show hamburger icon menu
+	background: @white;
+	&:hover,
+	&:focus {
+		background: @brand-lt !important;
+	}
+}
+// underbar
+.cbp-spmenu {
+	background: darken(@grey-dk, 10%);
+	box-shadow: inset -1px 0 5px rgba(0,0,0, 0.3), 2px 0 2px rgba(255,255,255, 0.6);
+	border-right: 1px solid #000;
+	overflow: hidden;
+}
+.cbp-spmenu-vertical {
+
+	a {
+		color: @off-white;
+		box-shadow: 0 1px 1px rgba(255,255,255, 0.03);
+		border-bottom: 1px solid darken(@grey-dk, 20%);
+		&:hover {
+			color: @white;
+			text-decoration: none;
+			background: darken(@grey-dk, 4%);
+		}
+	}
+}
+
+// twitter follow button
+.twitter-follow-button {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = page header = */
+/* ============================ */
+.page-header {
+	border-bottom: 1px dotted @warm-white;
+	margin: 0 0 30px 0;
+	padding: 0 0 20px;
+	.img {
+		max-width: 272px;
+		margin: 0 auto 60px;
+	}
+	h1 {
+		text-shadow: 1px 2px 0px #faf9f9, 3px 4px 0px #ece4dd;
+	}
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = patterns = */
+/* ============================ */
+.container {
+	text-shadow: 0 1px 1px rgba(255,255,255, 0.5);
+	padding: 0;
+	// page headline
+	h1 {
+		font-style: italic;
+		text-align: center;
+		color: @grey;
+		margin: 0 0 12px 0;
+		span {
+			color: @brand-dk;
+		}
+	}
+	// p
+	.lead {
+		font-size: @small;
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: @brand;
+	}
+	// section headline
+	h2 {
+		text-align: center;
+		font-style: italic;
+		color: @grey-dk;
+	}
+	h3 {
+		font-size: 24px;
+	}
+	img {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		margin: 0 auto;
+		&.artwork {
+			border-radius: 3px;
+			width: auto;
+			//max-width: 400px;
+			margin: 0 auto;
+		}
+	}
+	.row {
+		text-align: center;
+		margin: 0;
+
+		&.testimonial {
+
+			blockquote {
+				font-style: italic;
+				text-align: center;
+				border: none;
+				border-top: 1px dotted @warm-white;
+				border-bottom: 1px dotted @warm-white;
+				position: relative;
+				margin: 24px 0;
+				padding: 24px 24px 32px;
+			}
+			cite {
+				font-size: @small;
+				color: @grey-lt;
+			}
+			a {
+				font-size: @tiny;
+				font-style: normal;
+				position: absolute;
+				right: 5px;
+				bottom: 5px;
+			}
+		}
+	}
+	.footer {
+		font-size: @tiny;
+		color: lighten(@grey, 40%);
+		margin: 20px 0 30px;
+		padding: 20px 0;
+		span {
+			margin: 0 2px;
+		}
+		.left {
+			float: left;
+		}
+		.right {
+			float: right;
+		}
+	}
+}
+/* ============================ */
+
+
+/* ============================ */
+/* = media queries: small screen = */
+/* ============================ */
+@media (max-width: 1000px) {
+}
+@media (max-width: 800px) {
+}
+/* ============================ */
