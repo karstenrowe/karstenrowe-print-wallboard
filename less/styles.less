@@ -37,9 +37,9 @@
 @blue: #4786f1;
 @blue-lt: #d3e3ff;
 
-@grey-dk: #473b30;
-@grey: #6e655e;
-@grey-lt: #ab621a;
+@grey-dk: #3b3336;
+@grey: #61575a;
+@grey-lt: #837d7f;
 
 @off-white: #f1f3f6; // base color
 @warm-white: #ebe7e4;
@@ -100,6 +100,8 @@ body {
 	line-height: 21px;
 	color: @grey;
 	background-color: lighten(@warm-white, 7%);
+	.2x('../img/bg/body-bg.png', "no-repeat", 198px, 210px);
+	background-position: 0 100%;
 }
 /* ============================ */
 
@@ -216,8 +218,8 @@ body {
 }
 // underbar
 .cbp-spmenu {
-	background: darken(@grey-dk, 10%);
-	box-shadow: inset -1px 0 5px rgba(0,0,0, 0.3), 2px 0 2px rgba(255,255,255, 0.6);
+	background: @grey;
+	box-shadow: inset -1px 0 5px rgba(0,0,0, 0.1), 2px 0 2px rgba(255,255,255, 0.6);
 	border-right: 1px solid #000;
 	overflow: hidden;
 }
@@ -226,11 +228,11 @@ body {
 	a {
 		color: @off-white;
 		box-shadow: 0 1px 1px rgba(255,255,255, 0.03);
-		border-bottom: 1px solid darken(@grey-dk, 20%);
+		border-bottom: 1px solid @grey-dk;
 		&:hover {
 			color: @white;
 			text-decoration: none;
-			background: darken(@grey-dk, 4%);
+			background: @brand;
 		}
 	}
 }
@@ -252,7 +254,7 @@ body {
 	margin: 0 0 30px 0;
 	padding: 0 0 20px;
 	.img {
-		max-width: 272px;
+		max-width: 273px;
 		margin: 0 auto 60px;
 	}
 	h1 {
@@ -303,10 +305,12 @@ body {
 		height: auto;
 		margin: 0 auto;
 		&.artwork {
+			background: @white;
+			box-shadow: 0 1px 1px rgba(0,0,0, 0.1);
+			border: 1px solid @grey-lt;
 			border-radius: 3px;
-			width: auto;
-			//max-width: 400px;
-			margin: 0 auto;
+			margin: 0 auto 30px;
+			padding: 1px;
 		}
 	}
 	.row {
@@ -340,9 +344,13 @@ body {
 	}
 	.footer {
 		font-size: @tiny;
-		color: lighten(@grey, 40%);
+		color: @grey;
 		margin: 20px 0 30px;
 		padding: 20px 0;
+		.footer-info {
+			background: #fff;
+			background: rgba(255,255,255,0.8);
+		}
 		span {
 			margin: 0 2px;
 		}
@@ -363,5 +371,9 @@ body {
 @media (max-width: 1000px) {
 }
 @media (max-width: 800px) {
+	.container .footer .footer-info {
+		text-align: center;
+		float: none;
+	}
 }
 /* ============================ */
