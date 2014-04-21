@@ -24,25 +24,23 @@
 /* ============================ */
 /* = color = */
 /* ============================ */
-@brand-dk: #d74641; // rose
-@brand: #fa4a62; // base brand color
-@brand-lt: #ff7487;
+@brand-dk: #084997; // blue
+@brand: #75b1fa; // base brand color
+@brand-lt: #e1eefe;
 @brand-bg: lighten(@brand-lt, 33%);
 
-@green-dk: #26ae87;
-@green: #74ffd7;
-@green-lt: #d4fff3;
+@brand-dk: #ce2c42;
+@brand: #fa4a62; // Red orange
+@brand-lt: #EE836E;
+@brand-bg: #fff1ef;
 
-@blue-dk: #386ABE /* darken(@blue, 20%) */;
-@blue: #4786f1;
-@blue-lt: #d3e3ff;
+@grey-dk: #48555d;
+@grey: #66757f;
+@grey-lt: #c1c7cb;
 
-@grey-dk: #3b3336;
-@grey: #61575a;
-@grey-lt: #837d7f;
-
-@off-white: #f1f3f6; // base color
-@warm-white: #ebe7e4;
+@mint: #f4fffd;
+@yellow: #fffcf4;
+@off-white: #ebe7e4; // base color
 @white: #ffffff;
 /* ============================ */
 
@@ -99,9 +97,7 @@ body {
 	font-weight: normal;
 	line-height: 21px;
 	color: @grey;
-	background-color: lighten(@warm-white, 7%);
-	.2x('../img/bg/body-bg.png', "no-repeat", 200px, 198px);
-	background-position: 0 100%;
+	background-color: lighten(@off-white, 7%);
 }
 /* ============================ */
 
@@ -251,7 +247,7 @@ body {
 /* = page header = */
 /* ============================ */
 .page-header {
-	border-bottom: 1px dotted @warm-white;
+	border-bottom: 1px dotted @off-white;
 	margin: 0 0 30px 0;
 	padding: 0 0 20px;
 	.img {
@@ -324,8 +320,8 @@ body {
 				font-style: italic;
 				text-align: center;
 				border: none;
-				border-top: 1px dotted @warm-white;
-				border-bottom: 1px dotted @warm-white;
+				border-top: 1px dotted @off-white;
+				border-bottom: 1px dotted @off-white;
 				position: relative;
 				margin: 24px 0;
 				padding: 24px 24px 32px;
